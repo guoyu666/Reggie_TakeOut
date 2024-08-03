@@ -25,7 +25,7 @@ public class EmployeeController {
      * @return
      */
     @PostMapping("/login")
-    public R<Employee> login(HttpServletRequest request, @RequestBody Employee employee){
+    public R<Employee> login(HttpServletRequest request, @RequestBody Employee employee){   // @RequestBody注解来解析前端传来的Json，同时用POJO对象来封装
         /**
          * 1. 将页面提交的密码password进行md5加密
          * 2. 根据页面提交的用户名username查询数据库

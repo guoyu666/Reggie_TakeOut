@@ -53,7 +53,7 @@
             <version>3.5.6</version>
         </dependency>
 
-        <!---->
+        <!--单独引入mybatis-spring是因为mybatis-plus-boot-starter依赖了mybatis-spring, 而mybatis-plus-boot-starter下的mybatis-spring版本过低，导致项目启动失败，所以这里引入高版本的依赖-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
