@@ -26,13 +26,13 @@ public class EmployeeController {
      */
     @PostMapping("/login")
     public R<Employee> login(HttpServletRequest request, @RequestBody Employee employee){   // @RequestBody注解来解析前端传来的Json，同时用POJO对象来封装
-        /**
-         * 1. 将页面提交的密码password进行md5加密
-         * 2. 根据页面提交的用户名username查询数据库
-         * 3. 如果没有查询到，返回错误信息
-         * 4，密码比对，如果不一致，返回错误信息
-         * 5. 查询员工状态，如果为禁用，返回员工已禁用结果
-         * 6. 登录成功，将员工对象放入Session中，返回成功信息
+        /*
+          1. 将页面提交的密码password进行md5加密
+          2. 根据页面提交的用户名username查询数据库
+          3. 如果没有查询到，返回错误信息
+          4，密码比对，如果不一致，返回错误信息
+          5. 查询员工状态，如果为禁用，返回员工已禁用结果
+          6. 登录成功，将员工对象放入Session中，返回成功信息
          */
         // 1. 将页面提交的密码password进行md5加密
         String password = employee.getPassword();
