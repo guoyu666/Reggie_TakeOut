@@ -22,7 +22,7 @@
 <body>
   <div class="login" id="login-app">
     <div class="login-box">
-      <img src="../../images/login/login-l.png" alt="">
+      <img src="../../images/login/dog.png" alt="">
       <div class="login-form">
         <el-form ref="loginForm" :model="loginForm" :rules="loginRules" >
           <div class="login-form-title">
@@ -101,7 +101,7 @@
               this.loading = true
               let res = await loginApi(this.loginForm)
               if (String(res.code) === '1') { // 1表示登录成功
-                localStorage.setItem('userInfo',JSON.stringify(res.data))
+                localStorage.setItem('userInfo',JSON.stringify(res.data)) // 登录成功的话，将我们的数据转换成JSON保存在我们的浏览器中
                 window.location.href= '/backend/index.html'
               } else {
                 this.$message.error(res.msg)
