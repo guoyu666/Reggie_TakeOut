@@ -15,7 +15,7 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 public class R<T> {
-    private Integer code;  // 编码：1成功。0和其他数字失败
+    private Integer code;  // 编码：1成功，0和其他数字失败
     private String msg;  // 错误信息
     private T data; // 数据(这里使用泛型T来表示数据类型，可以是任意类型)
     private Map map = new HashMap();  // 动态数据
