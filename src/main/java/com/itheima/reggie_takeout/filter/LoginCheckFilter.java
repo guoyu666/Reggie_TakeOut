@@ -28,9 +28,11 @@ public class LoginCheckFilter implements Filter {
 
         //1.获取本次请求的URI
         String requestURI = request.getRequestURI();
+
+        // 这里{}表示占位符，输出的时候用实际值进行替换
         log.info("拦截到请求：{}", requestURI);
 
-        //定义不需要处理的请求
+        //定义不需要处理的请求，将这些请求直接放行
         String[] urls = new String[]{
                 "/employee/login",
                 "/employee/logout",
@@ -48,21 +50,23 @@ public class LoginCheckFilter implements Filter {
             return;
         }
 
-        //4.判断登录状态，如果已登录，则直接放行
+        //4.运行到这里代表该请求需要处理。进行登录状态的判断，如果已登录，则直接放行
         if (request.getSession().getAttribute("employee") != null) {
             log.info("用户已登录，id为{}", request.getSession().getAttribute("employee"));
             filterChain.doFilter(request, response);
             return;
         }
 
-        //5.如果未登录则返回未登录结果,通过输出流方式向客户端页面响应数据
+        //5. 运行到这里代表该请求需要处理，而且用户未登录（没有在session中找到employee属性对应的对象ID）。此时返回未登录结果,通过输出流方式向客户端页面响应数据
         log.info("用户未登录");
         log.info("用户id为：{}", request.getSession().getAttribute("employee"));
         response.getWriter().write(JSON.toJSONString(R.error("NOTLOGIN")));
 
     }
 
+    // 封装一个方法，用于判断请求是否需要处理
     public boolean check(String[] urls, String requestURI) {
+        // 加强for循环遍历urls数组
         for (String url : urls) {
             boolean match = PATH_MATCHER.match(url, requestURI);
             if (match) {
