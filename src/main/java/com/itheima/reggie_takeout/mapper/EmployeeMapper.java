@@ -5,6 +5,6 @@ import com.itheima.reggie_takeout.entity.Employee;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface EmployeeMapper extends BaseMapper<Employee> {
+public interface EmployeeMapper extends BaseMapper<Employee> {  // 继承了BaseMapper，可以使用BaseMapper中一些常见的增删改查的的方法
 
 }
