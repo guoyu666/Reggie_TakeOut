@@ -50,6 +50,32 @@ public class CategoryController {
         // 执行分页查询
         categoryService.page(pageInfo, queryWrapper);
         return R.success(pageInfo);
+    }
 
+    /**
+     * 根据id删除分类
+     * @param id
+     * @return
+     */
+    @DeleteMapping
+    public R<String> delete(Long id){
+        log.info("删除分类：{}", id);
+        // categoryService.removeById(id);
+
+        categoryService.remove(id);
+
+        return R.success("删除分类成功");
+    }
+
+    /**
+     * 根据id修改分类信息
+     * @param category
+     * @return
+     */
+    @PutMapping
+    public R<String> update(@RequestBody Category category){
+        log.info("修改分类信息：{}", category);
+        categoryService.updateById(category);
+        return R.success("修改分类信息成功");
     }
 }

@@ -19,18 +19,29 @@ public class GlobalExceptionHandler {
 
     /**
      * 异常处理方法
+     *
      * @param ex
      * @return
      */
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public R<String> exeptionHandler(SQLIntegrityConstraintViolationException ex) {
         log.error(ex.getMessage()); // 报错记得打印日志
-        if (ex.getMessage().contains("Duplicate entry")){
+        if (ex.getMessage().contains("Duplicate entry")) {
             // 获取已经存在的用户名，这里是从报错信息中获取
             String[] split = ex.getMessage().split(" ");    // 按照空格进行分割，最后生成的是字符串
             String msg = split[2] + "这个用户名已经存在";
             return R.error(msg);
         }
         return R.error("未知错误！");
+    }
+
+    /**
+     * 捕获自己设置的异常
+     */
+
+    @ExceptionHandler(CustomException.class)
+    public R<String> exeptionHandler(CustomException ex) {
+        log.error(ex.getMessage());
+        return R.error(ex.getMessage());
     }
 }
