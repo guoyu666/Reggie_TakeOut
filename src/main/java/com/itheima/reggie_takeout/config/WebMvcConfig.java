@@ -15,7 +15,7 @@ import java.util.List;
 public class WebMvcConfig extends WebMvcConfigurationSupport {
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/"); // classpath对应的就是resources这个目录
     }
 
     @Override
