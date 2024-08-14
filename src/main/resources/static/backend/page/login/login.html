@@ -101,8 +101,8 @@
               this.loading = true
               let res = await loginApi(this.loginForm)
               if (String(res.code) === '1') { // 1表示登录成功
-                localStorage.setItem('userInfo',JSON.stringify(res.data)) // 登录成功的话，将我们的数据转换成JSON保存在我们的浏览器中
-                window.location.href= '/backend/index.html'
+                localStorage.setItem('userInfo',JSON.stringify(res.data)) // 登录成功的话，将我们的数据转换成JSON保存在我们的浏览器中（key,value）的形式
+                window.location.href= '/backend/index.html' // 跳转到后台首页
               } else {
                 this.$message.error(res.msg)
                 this.loading = false
